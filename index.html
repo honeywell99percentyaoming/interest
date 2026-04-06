@@ -210,14 +210,14 @@
 </head>
 <body>
 <div class="container">
-    <h1>ระบบคำนวณดอกเบี้ยและช่วยวิเคราะห์หนี้</h1>
+    <h1>ระบบคำนวณดอกเบี้ยค้างขำระและช่วยวิเคราะห์ทางกฎหมาย</h1>
 
     <h2>ส่วนที่ 1: คำนวณดอกเบี้ย</h2>
 
-    <label>เงินต้น (บาท)</label>
+    <label>เงินที่ค้างชำระ (บาท)</label>
     <input type="number" id="principal" placeholder="เช่น 100000">
 
-    <label>อัตราดอกเบี้ย (% ต่อปี)</label>
+    <label>อัตราดอกเบี้ยค้างชำระ (% ต่อปี)</label>
     <input type="number" id="rate" placeholder="เช่น 5">
 
     <label>จำนวนวันค้างชำระ</label>
@@ -331,7 +331,7 @@ function startNeglectFlow() {
         `<div class="summary-box"><b>เลือกกรณี</b></div>`,
         `<button onclick="neglectPayableBranch()">กรณีอยู่ในวิสัยที่สามารถชำระได้</button>
          <button onclick="neglectEssentialTimeBranch()">กรณีล่วงเลยเวลาอันเป็นสาระสำคัญ</button>
-         <button onclick="neglectHardshipBranch()">ความยากลำบากในการชำระหนี้</button>`
+         <button onclick="neglectHardshipBranch()">ลูกหนี้ยากลำบากในการชำระหนี้จะตกเป็นพ้นวิสัยหรือไม่</button>`
     );
 }
 
@@ -341,7 +341,7 @@ function neglectPayableBranch() {
         '',
         `<div class="summary-box"><b>เลือกหัวข้อ</b></div>`,
         `<button onclick="neglectCriteria()">หลักเกณฑ์</button>
-         <button onclick="neglectEffects()">ผลของการไม่ชำระ</button>
+         <button onclick="neglectEffects()">หากลูกหนี้ไม่ชำระ เจ้าหนี้ทำอย่างไรได้บ้าง</button>
          <button class="button-secondary" onclick="startNeglectFlow()">กลับ</button>`
     );
 }
@@ -377,11 +377,11 @@ function neglectContractEffects() {
         '',
         `
         ${resultCards([
-            { title: 'ริบมัดจำ', text: 'เจ้าหนี้มีสิทธิริบมัดจำ ในกรณีที่การไม่ชำระหนี้เงินเป็นเรื่องของการผิดนัด โดยไม่จำเป็นต้องมีการฟ้องร้อง หรือพิสูจน์ความเสียหาย' },
-            { title: 'เรียกเบี้ยปรับ', text: 'เจ้าหนี้มีสิทธิเรียกเบี้ยปรับ ในกรณีเช่นเดียวกันกับการริบมัดจำ' },
+            { title: 'ริบมัดจำ', text: 'เจ้าหนี้มีสิทธิริบมัดจำ เมื่อลูกหนี้ได้วางมัดจำไว้' },
+            { title: 'เรียกเบี้ยปรับ', text: 'จ้าหนี้มีสิทธิเรียกเบี้ยปรับ ในกรณีที่การไม่ชำระหนี้เงินเป็นเรื่องของการผิดนัดโดยไม่จำเป็นต้องมีการฟ้องร้อง หรือพิสูจน์ความเสียหาย' },
             { title: 'เลิกสัญญา', text: 'เจ้าหนี้อาจใช้สิทธิเลิกสัญญาตามข้อสัญญาได้เลย โดยไม่ต้องบอกกล่าวกำหนดเวลาก่อน' }
         ], 'blue-card')}
-        <div class="law-note-red">*หากเจ้าหนี้เลือกใช้สิทธิตามกรณีใดแล้ว จะไม่สามารถฟ้องศาลตามกฎหมายลักษณะหนี้ได้อีก</div>
+        <div class="law-note-red">*หากเจ้าหนี้เลือกใช้สิทธิเรียกเบี้ยปรับ หรือยกเลิกสัญญาแล้ว จะไม่สามารถฟ้องศาลตามกฎหมายลักษณะหนี้ได้อีก</div>
         `,
         `<button class="button-secondary" onclick="neglectEffects()">กลับ</button>`
     );
@@ -459,8 +459,9 @@ function neglectContractTypeEffects() {
         'ตามกม.ลักษณะสัญญา',
         '',
         resultCards([
-            { title: 'บอกเลิกตามเอกเทศสัญญา' },
-            { title: 'บอกเลิกตามหลักทั่วไป' }
+            { title: 'บอกเลิกตามหลักทั่วไป
+               1.กรณีลูกหนี้ไม่ชำระหนี้ เจ้าหนี้ต้องบอกกล่าวให้ลูกหนี้ชำระหนี้ภายในเวลาอันสมควรก่อน เมื่อลูกหนี้ไม่ชำระหนี้ เจ้าหนี้จึงมีสิทธิบอกเลิกสัญญาได้ (มาตรา 387)
+               2.กรณีเป็นหนี้ที่มีกำหนดเวลาในการชำระหนี้เป็นสำคันสำคัญ หากลูกหนี้ไม่ชำระหนี้ภายในกำหนดเวลา เจ้าหนี้มีมีมีสิทธิบอกเลิกสัญญาโดยไม่ต้องบอกกล่าวลูกหนี้ (มาตรา 388)' }
         ], 'blue-card'),
         `<button class="button-secondary" onclick="neglectEffects()">กลับ</button>`
     );
@@ -506,7 +507,7 @@ function neglectHardshipTypes() {
         '',
         resultCards([
             { title: 'ภาระจากความเสี่ยงปกติจากธุรกิจ', text: 'ไม่ตกเป็นพ้นวิสัย' },
-            { title: 'ภาระพิเศษ', text: 'ไม่ตกเป็นพ้นวิสัย' }
+            { title: 'ภาระพิเศษ เช่น ภัยพิบัติรุนแรง สงคราม', text: 'ไม่ตกเป็นพ้นวิสัย' }
         ], 'pink-card'),
         `<button class="button-secondary" onclick="neglectHardshipBranch()">กลับ</button>`
     );
@@ -557,7 +558,6 @@ function lateFaultEffects() {
         '',
         `<div class="summary-box"><b>เลือกประเภทหนี้</b></div>`,
         `<button onclick="lateMoneyDebt()">หนี้เงิน</button>
-         <button onclick="latePropertyDebt()">หนี้ส่งมอบทรัพย์สิน</button>
          <button class="button-secondary" onclick="lateFaultBranch()">กลับ</button>`
     );
 }
