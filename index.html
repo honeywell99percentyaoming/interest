@@ -683,7 +683,7 @@ function startAfterContractFlow() {
 
 function startAfterContractStillPayable() {
     renderHelp(
-        'สาเหตุ',
+        'หากยังชำระได้',
         '',
         `<div class="summary-box"><b>ลูกหนี้ต้องชำระหนี้</b></div>`,
          <button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>`
@@ -692,7 +692,7 @@ function startAfterContractStillPayable() {
 
 function afterImpossibilityForceMajeure() {
     renderHelp(
-        'เหตุคาดหมายได้',
+        'เหตุการ์ณเปลี่ยนแปลงของตลาด คาดหมายได้',
         '',
         resultCards([
             { title: 'แม้มีอุปสรรคในการชำระหนี้ ลูกหนี้ยังต้องชำระหนี้' }
@@ -711,71 +711,6 @@ function afterImpossibilityDebtorFault() {
          <button class="button-secondary" onclick="startAfterContractImpossibility()">กลับ</button>`
     );
 }
-
-function afterImpossibilityAll() {
-    renderHelp(
-        'พ้นวิสัยทั้งหมด',
-        '',
-        resultCards([
-            { title: 'ลูกหนี้ต้องใช้ค่าสินไหมทดแทน ม.218' }
-        ], 'blue-card'),
-        `<button class="button-secondary" onclick="afterImpossibilityDebtorFault()">กลับ</button>`
-    );
-}
-
-function afterImpossibilityPartial() {
-    renderHelp(
-        'พ้นแต่บางส่วน',
-        '',
-        resultCards([
-            { title: 'รับชำระแต่บางส่วน' },
-            { title: 'เจ้าหนี้ไม่รับชำระหนี้ และเรียกค่าสินไหมทดแทน ม.218 ว.2' }
-        ], 'blue-card'),
-        `<button class="button-secondary" onclick="afterImpossibilityDebtorFault()">กลับ</button>`
-    );
-}
-
-function startAfterContractStillPayable() {
-    renderHelp(
-        'ยังพอชำระหนี้ได้',
-        '',
-        `<div class="summary-box"><b>เลือกประเภทเหตุการณ์</b></div>`,
-        `<button onclick="afterStillPayableExpected()">เหตุการณ์เปลี่ยนแปลงของตลาด คาดหมายได้</button>
-         <button onclick="afterStillPayableUnexpected()">เหตุไม่อาจคาดหมายได้</button>
-         <button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>`
-    );
-}
-
-function afterStillPayableExpected() {
-    renderHelp(
-        'เหตุการณ์เปลี่ยนแปลงของตลาด คาดหมายได้',
-        '',
-        resultCards([
-            { title: 'การมีอุปสรรคในการชำระหนี้' },
-            { title: 'ลูกหนี้ยังต้องชำระหนี้' }
-        ], 'blue-card'),
-        `<button class="button-secondary" onclick="startAfterContractStillPayable()">กลับ</button>`
-    );
-}
-
-function afterStillPayableUnexpected() {
-    renderHelp(
-        'เหตุไม่อาจคาดหมายได้',
-        '',
-        `
-        ${resultCards([
-            { title: 'การชำระหนี้กลายเป็นภาระมากเกินไป' },
-            { title: 'ลูกหนี้ควรเลิกสัญญา หรือปรับข้อสัญญาให้เป็นธรรม' }
-        ], 'pink-card')}
-        <div class="summary-box pink">
-            หมายเหตุ: แนวคิดเรื่องการเลิกสัญญาหรือปรับข้อสัญญาให้เป็นธรรมในกรณีภาระหนักเกินไป มักอาศัยหลักความสุจริตและความเป็นธรรมประกอบการพิจารณา
-        </div>
-        `,
-        `<button class="button-secondary" onclick="startAfterContractStillPayable()">กลับ</button>`
-    );
-}
-
-
 function startReciprocalImpossibilityFlow() {
     renderHelp(
         'ผลของการชำระหนี้พ้นวิสัยในสัญญาต่างตอบแทน',
