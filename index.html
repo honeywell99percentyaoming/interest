@@ -691,7 +691,68 @@ function startAfterContractStillPayable() {
         `<button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>`
     );
 }
+function startAfterContractImpossibility() {
+    renderHelp(
+        'ชำระหนี้ไม่ได้เลย',
+        '',
+        `<div class="summary-box"><b>สาเหตุของการชำระหนี้ไม่ได้</b></div>`,
+        `
+        <button onclick="afterMarketChange()">เหตุการณ์เปลี่ยนแปลงของตลาด (คาดหมายได้)</button>
+        <button onclick="afterUnexpectedEvent()">เหตุไม่อาจคาดหมายได้</button>
+        <button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>
+        `
+    );
+}
+   function afterMarketChange() {
+    renderHelp(
+        'เหตุการณ์เปลี่ยนแปลงของตลาด',
+        '',
+        `
+        <div class="summary-box pink">
+            การมีอุปสรรคในการชำระหนี้ เช่น ต้นทุนสูงขึ้น ตลาดเปลี่ยนแปลง
+            <br><b>ลูกหนี้ยังต้องชำระหนี้</b>
+        </div>
+        `,
+        `<button class="button-secondary" onclick="startAfterContractImpossibility()">กลับ</button>`
+    );
+}
+   function afterUnexpectedEvent() {
+    renderHelp(
+        'เหตุไม่อาจคาดหมายได้',
+        '',
+        `<div class="summary-box"><b>การชำระหนี้กลายเป็นภาระมากเกินไป</b></div>`,
+        `
+        <button onclick="afterCancelContract()">ลูกหนี้ควรเลิกสัญญา</button>
+        <button onclick="afterAdjustContract()">เจรจาปรับข้อสัญญา</button>
+        <button class="button-secondary" onclick="startAfterContractImpossibility()">กลับ</button>
+        `
+    );
+}
+   function afterCancelContract() {
+    renderHelp(
+        'การเลิกสัญญา',
+        '',
+        `
+        <div class="summary-box pink">
+            ลูกหนี้สามารถใช้สิทธิเลิกสัญญาได้ เนื่องจากภาระเกินสมควร
+        </div>
+        `,
+        `<button class="button-secondary" onclick="afterUnexpectedEvent()">กลับ</button>`
+    );
+}
 
+function afterAdjustContract() {
+    renderHelp(
+        'การเจรจาปรับสัญญา',
+        '',
+        `
+        <div class="summary-box blue">
+            คู่สัญญาสามารถเจรจาแก้ไขสัญญาให้เหมาะสมกับสถานการณ์ใหม่ได้
+        </div>
+        `,
+        `<button class="button-secondary" onclick="afterUnexpectedEvent()">กลับ</button>`
+    );
+}
 function afterImpossibilityForceMajeure() {
     renderHelp(
         'เหตุการ์ณเปลี่ยนแปลงของตลาด คาดหมายได้',
