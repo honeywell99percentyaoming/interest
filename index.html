@@ -678,16 +678,16 @@ function startAfterContractFlow() {
         '',
         `<div class="summary-box"><b>เลือกกรณี</b></div>`,
         `<button onclick="startAfterContractImpossibility()">ชำระหนี้ไม่ได้เลย</button>
-         <button onclick="startAfterContractStillPayable()">ยังพอชำระหนี้ได้</button>`
+         <button onclick="startAfterContractStillPayable()">ยังชำระหนี้ได้</button>`
     );
 }
 
 function startAfterContractImpossibility() {
     renderHelp(
-        'การชำระหนี้พ้นวิสัย',
+        'สาเหตุ',
         '',
         `<div class="summary-box"><b>เลือกสาเหตุ</b></div>`,
-        `<button onclick="afterImpossibilityForceMajeure()">เหตุสุดวิสัย</button>
+        `<button onclick="afterImpossibilityForceMajeure()">เหตุการ์ณเปลี่ยนแปลงของตลาด</button>
          <button onclick="afterImpossibilityDebtorFault()">ความผิดลูกหนี้</button>
          <button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>`
     );
