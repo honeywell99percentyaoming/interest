@@ -676,17 +676,16 @@ function startAfterContractFlow() {
         'เกิดเหตุการณ์บางอย่างขึ้นหลังการทำสัญญา',
         '',
         `<div class="summary-box"><b>สามารถชำระหนี้ได้หรือไม่</b></div>`,
-        `<button onclick="startAfterContractImpossibility()">ชำระหนี้ไม่ได้เลย</button>
-         <button onclick="startAfterContractStillPayable()">ยังชำระหนี้ได้</button>`
+        `<button onclick="startAfterContractStillPayable()">ยังชำระหนี้ได้</button>
+         <button onclick="startAfterContractImpossibility()">ชำระหนี้ไม่ได้เลย</button>`
     );
 }
 
-function startAfterContractImpossibility() {
+function startAfterContractStillPayable() {
     renderHelp(
         'สาเหตุ',
         '',
-        `<div class="summary-box"><b>เลือกสาเหตุ</b></div>`,
-        `<button onclick="afterImpossibilityForceMajeure()">เหตุการ์ณเปลี่ยนแปลงของตลาด คาดหมายได้</button>
+        `<div class="summary-box"><b>ลูกหนี้ต้องชำระหนี้</b></div>`,
          <button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>`
     );
 }
