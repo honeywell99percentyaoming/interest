@@ -675,7 +675,7 @@ function startAfterContractFlow() {
     renderHelp(
         'เกิดเหตุการณ์บางอย่างขึ้นหลังการทำสัญญา',
         '',
-        `<div class="summary-box"><b>เลือกกรณี</b></div>`,
+        `<div class="summary-box"><b>สามารถชำระหนี้ได้หรือไม่</b></div>`,
         `<button onclick="startAfterContractImpossibility()">ชำระหนี้ไม่ได้เลย</button>
          <button onclick="startAfterContractStillPayable()">ยังชำระหนี้ได้</button>`
     );
@@ -686,18 +686,17 @@ function startAfterContractImpossibility() {
         'สาเหตุ',
         '',
         `<div class="summary-box"><b>เลือกสาเหตุ</b></div>`,
-        `<button onclick="afterImpossibilityForceMajeure()">เหตุการ์ณเปลี่ยนแปลงของตลาด</button>
-         <button onclick="afterImpossibilityDebtorFault()">ความผิดลูกหนี้</button>
+        `<button onclick="afterImpossibilityForceMajeure()">เหตุการ์ณเปลี่ยนแปลงของตลาด คาดหมายได้</button>
          <button class="button-secondary" onclick="startAfterContractFlow()">กลับ</button>`
     );
 }
 
 function afterImpossibilityForceMajeure() {
     renderHelp(
-        'เหตุสุดวิสัย',
+        'เหตุคาดหมายได้',
         '',
         resultCards([
-            { title: 'ลูกหนี้หลุดพ้นจากการชำระหนี้ตาม ม.219 วรรคแรก' }
+            { title: 'แม้มีอุปสรรคในการชำระหนี้ ลูกหนี้ยังต้องชำระหนี้' }
         ], 'pink-card'),
         `<button class="button-secondary" onclick="startAfterContractImpossibility()">กลับ</button>`
     );
@@ -705,11 +704,11 @@ function afterImpossibilityForceMajeure() {
 
 function afterImpossibilityDebtorFault() {
     renderHelp(
-        'ความผิดลูกหนี้',
+        'เหตุไม่อาจคาดหมายได้',
         '',
-        `<div class="summary-box"><b>เลือกผลของความพ้นวิสัย</b></div>`,
-        `<button onclick="afterImpossibilityAll()">พ้นวิสัยทั้งหมด</button>
-         <button onclick="afterImpossibilityPartial()">พ้นแต่บางส่วน</button>
+        `<div class="summary-box"><b>การชำระหนี้กลายเป็นภาระมากเกินไป</b></div>`,
+        `<button onclick="afterImpossibilityAll()">ลูกหนี้ควรเลิกสัญญา</button>
+         <button onclick="afterImpossibilityPartial()">เจรจาปรับข้อสัญญา</button>
          <button class="button-secondary" onclick="startAfterContractImpossibility()">กลับ</button>`
     );
 }
