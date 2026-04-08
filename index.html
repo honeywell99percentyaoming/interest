@@ -253,13 +253,18 @@ function calculate() {
         document.getElementById('result').innerHTML = 'กรุณากรอกข้อมูลให้ครบถ้วนและเป็นตัวเลขที่ถูกต้อง';
         return;
     }
+   
+    if (r > 15) {
+        document.getElementById('result').innerHTML =
+            '❌ อัตราดอกเบี้ยเกิน 15% ต่อปี<br>' +
+            'อาจขัดต่อประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 654';
+        return;
+    }
 
     const interest = p * (r / 100) * (d / 365);
-    const total = p + interest;
 
     document.getElementById('result').innerHTML =
-        'ดอกเบี้ย = ' + interest.toFixed(2) + ' บาท<br>' +
-        'รวม = ' + total.toFixed(2) + ' บาท';
+        'ดอกเบี้ยค้างชำระ = ' + interest.toFixed(2) + ' บาท';
 }
 
 function toggleHelp() {
