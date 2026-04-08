@@ -237,6 +237,7 @@
             <button onclick="startCase(2)">2. เหตุการณ์หลังสัญญา</button>
             <button onclick="startCase(3)">3. การละเลยไม่ชำระหนี้</button>
             <button onclick="startCase(5)">4. การชำระล่าช้า</button>
+           <button onclick="startCase(5)">5. ลูกหนี้ชำระเงินไม่ครบ</button>
         </div>
         <div id="helpContent" class="section"></div>
     </div>
@@ -1040,7 +1041,49 @@ function reciprocal372DebtorFault() {
         `<button class="button-secondary" onclick="reciprocal372Abnormal()">กลับ</button>`
     );
 }
+function startIncompletePaymentFlow() {
+    renderHelp(
+        'ลูกหนี้ชำระเงินไม่ครบ',
+        '',
+        `
+        <div class="summary-box">
+            <b>ลูกหนี้ชำระหนี้ไม่ครบ</b> ถือว่าเป็นการไม่ชำระหนี้ส่วนหนึ่ง
+            ต้องพิจารณาว่าเจ้าหนี้ได้รับความเสียหายหรือไม่
+        </div>
+        `,
+        `
+        <button onclick="checkDamageYes()">เกิดความเสียหาย</button>
+        <button onclick="checkDamageNo()">ไม่เกิดความเสียหาย</button>
+        `
+    );
+}
 
+function checkDamageYes() {
+    renderHelp(
+        'กรณีเกิดความเสียหาย',
+        '',
+        `
+        ${resultCards([
+            { title: 'บังคับชำระหนี้ ม.213', text: 'เจ้าหนี้สามารถฟ้องให้ลูกหนี้ชำระหนี้ส่วนที่เหลือได้' },
+            { title: 'เรียกค่าสินไหมทดแทน ม.215', text: 'เพื่อให้เจ้าหนี้กลับสู่ฐานะเสมือนมีการชำระหนี้ครบถ้วน' }
+        ], 'blue-card')}
+        `,
+        `<button class="button-secondary" onclick="startIncompletePaymentFlow()">กลับ</button>`
+    );
+}
+
+function checkDamageNo() {
+    renderHelp(
+        'กรณีไม่เกิดความเสียหาย',
+        '',
+        `
+        ${resultCards([
+            { title: 'ไม่สามารถเรียกค่าสินไหมทดแทนได้', text: 'เพราะไม่มีความเสียหายเกิดขึ้น' }
+        ], 'pink-card')}
+        `,
+        `<button class="button-secondary" onclick="startIncompletePaymentFlow()">กลับ</button>`
+    );
+}
 
 </script>
 </body>
