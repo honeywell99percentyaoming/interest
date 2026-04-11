@@ -236,7 +236,7 @@
             <button onclick="startCase(1)">1. ลูกหนี้ไม่ชำระหนี้</button>
             <button onclick="startCase(2)">2. เหตุการณ์หลังสัญญา</button>
             <button onclick="startCase(3)">3. การละเลยไม่ชำระหนี้</button>
-            <button onclick="startCase(5)">4. การชำระล่าช้า</button>
+            <button onclick="startCase(4)">4. การชำระล่าช้า</button>
            <button onclick="startCase(5)">5. ลูกหนี้ชำระเงินไม่ครบ</button>
         </div>
         <div id="helpContent" class="section"></div>
@@ -326,7 +326,7 @@ function startCase(type) {
     if (type === 5) {
     startIncompletePaymentFlow();
 }
-
+}
 
 function startNeglectFlow() {
     renderHelp(
