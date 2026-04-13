@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ระบบคำนวณดอกเบี้ยและช่วยวิเคราะห์หนี้</title>
+<title>ระบบคำนวณดอกเบี้ยผิดนัดและช่วยวิเคราะห์หนี้</title>
 <style>
     * { box-sizing: border-box; }
     body {
@@ -210,14 +210,14 @@
 </head>
 <body>
 <div class="container">
-    <h1>ระบบคำนวณดอกเบี้ยค้างชำระและช่วยวิเคราะห์ทางกฎหมาย</h1>
+    <h1>ระบบคำนวณดอกเบี้ยค้างผิดนัดและช่วยวิเคราะห์ทางกฎหมาย</h1>
 
-    <h2>ส่วนที่ 1: คำนวณดอกเบี้ย</h2>
+    <h2>ส่วนที่ 1: คำนวณดอกเบี้ยผืดนัด</h2>
 
-    <label>เงินต้นงวดที่ค้างชำระ (บาท)</label>
+    <label>เงินต้นงวดที่ผิดนัด (บาท)</label>
     <input type="number" id="principal" placeholder="เช่น 100000">
 
-    <label>อัตราดอกเบี้ยค้างชำระ (% ต่อปี)</label>
+    <label>อัตราดอกเบี้ยผิดนัด (% ต่อปี)</label>
     <input type="number" id="rate" placeholder="เช่น 5">
 
     <label>จำนวนวันค้างชำระ</label>
@@ -264,7 +264,7 @@ function calculate() {
     const interest = p * (r / 100) * (d / 365);
 
     document.getElementById('result').innerHTML =
-        'ดอกเบี้ยค้างชำระ = ' + interest.toFixed(2) + ' บาท';
+        'ดอกเบี้ยผิดนัด = ' + interest.toFixed(2) + ' บาท';
 }
 
 function toggleHelp() {
